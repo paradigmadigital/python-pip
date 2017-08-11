@@ -1,2 +1,0 @@
-- name: Install from maven
-  src : git+https://git.paradigmadigital.com/ansible/install-from-maven/
