@@ -1,7 +1,9 @@
 ---
 # tasks file for python-pip
 - name: Check pip is installed anywhere but CentOS
-  package: name=python-pip state=latest
+  package:
+    name: python-pip
+    state: latest
   become: True
   become_method: "{{ become_method }}"
   when: ansible_os_family != "RedHat"

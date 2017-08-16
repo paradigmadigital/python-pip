@@ -1,4 +1,4 @@
-Jolokia
+pyhon-pip
 =========
 
 Install Python Package Installer on default distro's python.
