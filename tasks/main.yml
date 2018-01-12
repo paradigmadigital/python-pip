@@ -1,15 +1,16 @@
 ---
 # tasks file for python-pip
-- name: Check pip is installed anywhere but CentOS
+- name: Install epel only for CentOS in order to install pip
+  yum:
+    name=epel-release
+    state=present
+  become: True
+  become_method: "{{ become_type }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Install pip
   package:
     name: python-pip
-    state: latest
+    state: present
   become: True
-  become_method: "{{ become_method }}"
-  when: ansible_os_family != "RedHat"
-
-- name: Check pip is installed in CentOS
-  shell: 'curl https://bootstrap.pypa.io/get-pip.py | python -'
-  become: True
-  become_method: "{{ become_method }}"
-  when: ansible_os_family == "RedHat"
+  become_method: "{{ become_type }}"
